@@ -31,12 +31,12 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/register/{id}")
-	public void updateTopic(@RequestBody Registration register, @PathVariable String id){
+	public void updateRegistration(@RequestBody Registration register, @PathVariable String id){
 		regService.updateRegistration(id, register);
 	}
 	
 	@RequestMapping(value="/register/{id}",method=RequestMethod.DELETE)
-	public void deleteTopic(@PathVariable String id){
+	public void deleteRegistration(@PathVariable String id){
 		regService.deleteRegistration(id);
 	}
 }
