@@ -15,6 +15,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.registore.document.Document;
+import com.registore.otp.OTPData;
 
 @Entity
 public class Registration {
@@ -24,7 +25,6 @@ public class Registration {
 	private Long id;
 
 	@Column(columnDefinition="VARCHAR(50)")
-	@NotBlank
 	private String firstname;
 	
 	@Column(columnDefinition="VARCHAR(50)")
@@ -34,22 +34,22 @@ public class Registration {
 	private String lastname;
 	
 	@Column(columnDefinition="VARCHAR(150)")
-	@NotBlank
 	private String area;
 	
 	//@Max(10)
-	@NotBlank
 	private String mobile;
 	
 	@Email
-	@NotBlank
 	private String email;
 	
 	@Column(columnDefinition="VARCHAR(1)")
 	private String gender;
 	
-	@OneToMany(mappedBy = "document", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "registrationDocId", cascade = CascadeType.ALL)
 	private List<Document> listDocument = new ArrayList<Document>();
+	
+	@OneToMany(mappedBy = "registrationOtpId", cascade = CascadeType.ALL)
+	private List<OTPData>  otpData = new ArrayList<OTPData>();
 
 	public Long getId() {
 		return id;

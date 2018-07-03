@@ -11,7 +11,7 @@ public class RegistrationService {
 	@Autowired
 	RegistrationDao regDao;
 	
-	public List<Registration> getAllUserRegistered(){
+	public List<Registration> getAllRegisteredUser(){
 		
 		return (List<Registration>) regDao.findAll();
 	}

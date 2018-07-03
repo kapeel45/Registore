@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.registore.registration.Registration;
+
 @Entity
 public class Document {
 
@@ -26,8 +28,8 @@ public class Document {
 	private String identityDetail;
 
 	@ManyToOne
-	@JoinColumn(name="document_id")
-	private Document document;
+	@JoinColumn(name="registration_id")
+	private Registration registrationDocId;
 
 
 	public Long getId() {
@@ -57,6 +59,16 @@ public class Document {
 
 	public void setIdentityDetail(String identityDetail) {
 		this.identityDetail = identityDetail;
+	}
+
+
+	public Registration getRegistrationDocId() {
+		return registrationDocId;
+	}
+
+
+	public void setRegistrationDocId(Registration registrationDocId) {
+		this.registrationDocId = registrationDocId;
 	}
 
 }
