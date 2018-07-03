@@ -47,7 +47,6 @@ public class OTPService {
 	public boolean verifyOTP(String otpCode) {
 		
 		OTPData otpData = otpDao.findByOtpCode(otpCode);
-		System.out.println("otpData: "+otpData);
 		if(otpData != null) {
 			return true;
 		}
