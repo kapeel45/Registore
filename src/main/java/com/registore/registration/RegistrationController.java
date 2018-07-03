@@ -16,12 +16,17 @@ public class RegistrationController {
 	private RegistrationService regService;
 
 	@RequestMapping("/register")
-	public List<Registration> getAllTopics(){
+	public List<Registration> getAllRegistration(){
 		return regService.getAllUserRegistered(); 
 	}
 	
+	@RequestMapping("/run")
+	public String run(){
+		return "Complete"; 
+	}
+	
 	@RequestMapping("/register/{id}")
-	public Registration getTopic(@PathVariable String id){	
+	public Registration getRegistration(@PathVariable String id){	
 		return regService.getRegistration(id);
 	}
 	
