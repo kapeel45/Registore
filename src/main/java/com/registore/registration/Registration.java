@@ -25,7 +25,6 @@ public class Registration {
 	private Long id;
 
 	@Column(columnDefinition="VARCHAR(50)")
-	@NotBlank
 	private String firstname;
 	
 	@Column(columnDefinition="VARCHAR(50)")
@@ -35,15 +34,12 @@ public class Registration {
 	private String lastname;
 	
 	@Column(columnDefinition="VARCHAR(150)")
-	@NotBlank
 	private String area;
 	
 	//@Max(10)
-	@NotBlank
 	private String mobile;
 	
 	@Email
-	@NotBlank
 	private String email;
 	
 	@Column(columnDefinition="VARCHAR(1)")

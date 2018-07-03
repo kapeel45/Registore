@@ -6,16 +6,26 @@ import java.security.SecureRandom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.registore.registration.Registration;
+import com.registore.registration.RegistrationDao;
+
 @Service
 public class OTPService {
 	
 	@Autowired
 	OTPDao otpDao;
 
-	private void saveOTP() {
+	@Autowired
+	RegistrationDao regDao;
+	
+	public void saveOTP() {
 		
 		OTPData otpData = new OTPData();
+		
+		//TODO pass registration object/id while saving
+		Registration registration = regDao.findOne(1l);
 		otpData.setOtpCode(generateOTP(6));
+		otpData.setRegistrationOtpId(registration);
 		otpDao.save(otpData);
 	}
 
@@ -37,7 +47,7 @@ public class OTPService {
 	public boolean verifyOTP(String otpCode) {
 		
 		OTPData otpData = otpDao.findByOtpCode(otpCode);
-		
+		System.out.println("otpData: "+otpData);
 		if(otpData != null) {
 			return true;
 		}

@@ -16,8 +16,8 @@ public class RegistrationController {
 	private RegistrationService regService;
 
 	@RequestMapping("/register")
-	public List<Registration> getAllTopics(){
-		return regService.getAllUserRegistered(); 
+	public List<Registration> getAllRegisteredUser(){
+		return regService.getAllRegisteredUser(); 
 	}
 	
 	@RequestMapping("/register/{id}")
