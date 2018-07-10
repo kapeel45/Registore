@@ -56,4 +56,14 @@ public class RegistrationService {
 	public void deleteRegistration(String id) {
 		regDao.delete(Long.parseLong(id));
 	}
+
+	public boolean verifyRegistrationbyMobile(String mobileNo) {
+		
+		Registration registration = regDao.findByMobile(mobileNo);
+		
+		if(registration != null)
+			return true;
+		else
+			return false;
+	}
 }
