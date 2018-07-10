@@ -1,13 +1,20 @@
 package com.registore.registration;
 
+import java.sql.SQLException;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.registore.exception.UserAlreadyExist;
 
 @Service
 public class RegistrationService {
 
+	private static final Logger logger = LoggerFactory.getLogger(RegistrationService.class);
+	
 	@Autowired
 	RegistrationDao regDao;
 	
@@ -20,8 +27,14 @@ public class RegistrationService {
 		return regDao.findOne(Long.parseLong(id));
 	}
 
-	public void createRegistration(Registration autoRegister) {
-		regDao.save(autoRegister);
+	public void createRegistration(Registration autoRegister) throws Exception {
+		
+		try {
+			regDao.save(autoRegister);
+		}catch(Exception e) {
+			logger.error("createRegistration Exception: "+e.toString());
+			throw new UserAlreadyExist(e.toString());
+		}
 	}
 
 	public void updateRegistration(String id, Registration reqRegister) {

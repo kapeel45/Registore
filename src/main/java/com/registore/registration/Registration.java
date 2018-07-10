@@ -37,9 +37,11 @@ public class Registration {
 	private String area;
 	
 	//@Max(10)
+	@Column(unique = true)
 	private String mobile;
 	
 	@Email
+	@Column(unique = true)
 	private String email;
 	
 	@Column(columnDefinition="VARCHAR(1)")
@@ -50,6 +52,20 @@ public class Registration {
 	
 	@OneToMany(mappedBy = "registrationOtpId", cascade = CascadeType.ALL)
 	private List<OTPData>  otpData = new ArrayList<OTPData>();
+
+	Registration(){}
+	
+	public Registration( String firstname, String middlename, String lastname, String area, String mobile,
+			String email, String gender) {
+		super();
+		this.firstname = firstname;
+		this.middlename = middlename;
+		this.lastname = lastname;
+		this.area = area;
+		this.mobile = mobile;
+		this.email = email;
+		this.gender = gender;
+	}
 
 	public Long getId() {
 		return id;
