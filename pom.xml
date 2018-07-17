@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>Registore</artifactId>
 	<groupId>com.registore</groupId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<name>Registore</name>
 	<description>Register Auto instead of manual</description>
 
