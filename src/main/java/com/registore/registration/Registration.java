@@ -47,7 +47,7 @@ public class Registration {
 	@Column(columnDefinition="VARCHAR(1)")
 	private String gender;
 	
-	@OneToMany(mappedBy = "registrationDocId", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "registrationId", cascade = CascadeType.ALL)
 	private List<Document> listDocument = new ArrayList<Document>();
 	
 	@OneToMany(mappedBy = "registrationOtpId", cascade = CascadeType.ALL)

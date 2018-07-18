@@ -29,7 +29,15 @@ public class Document {
 
 	@ManyToOne
 	@JoinColumn(name="registration_id")
-	private Registration registrationDocId;
+	private Registration registrationId;
+
+
+	public Document(String identityNumber, String identityDetail, Registration registrationId) {
+		super();
+		this.identityNumber = identityNumber;
+		this.identityDetail = identityDetail;
+		this.registrationId = registrationId;
+	}
 
 
 	public Long getId() {
@@ -56,19 +64,16 @@ public class Document {
 		return identityDetail;
 	}
 
-
 	public void setIdentityDetail(String identityDetail) {
 		this.identityDetail = identityDetail;
 	}
 
-
-	public Registration getRegistrationDocId() {
-		return registrationDocId;
+	public Registration getRegistrationId() {
+		return registrationId;
 	}
 
-
-	public void setRegistrationDocId(Registration registrationDocId) {
-		this.registrationDocId = registrationDocId;
+	public void setRegistrationId(Registration registrationId) {
+		this.registrationId = registrationId;
 	}
 
 }

@@ -48,7 +48,7 @@ public class RegistrationController {
 		}catch(Exception e) {
 			return new ResponseEntity<Object>(new ApiError(HttpStatus.BAD_REQUEST,e),HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<Object>(Constant.Success,HttpStatus.OK);
+		return new ResponseEntity<Object>(Constant.SUCCESS,HttpStatus.OK);
 	}
 	
 	@PutMapping(value="/register/{id}")
