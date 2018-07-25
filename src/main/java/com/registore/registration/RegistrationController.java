@@ -2,6 +2,8 @@ package com.registore.registration;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.registore.constants.Constant;
-import com.registore.exception.ApiError;
-
 @RestController
 public class RegistrationController {
 
+	private static final Logger logger = LoggerFactory.getLogger(RegistrationController.class);
+	
 	@Autowired
 	private RegistrationService regService;
 
@@ -41,14 +42,16 @@ public class RegistrationController {
 	}
 	
 	@PostMapping(value="/register")
-	public @ResponseBody ResponseEntity<Object> addRegistration(@RequestBody Registration register){
-		
-		try {
-			regService.createRegistration(register);
+	public @ResponseBody ResponseEntity<Registration> addRegistration(@RequestBody Registration register){
+		Registration registration = null;
+		logger.info("Registration controller called");
+		try { 
+			registration = regService.createRegistration(register);
 		}catch(Exception e) {
-			return new ResponseEntity<Object>(new ApiError(HttpStatus.BAD_REQUEST,e),HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<Registration>(registration,HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<Object>(Constant.SUCCESS,HttpStatus.OK);
+		
+		return new ResponseEntity<Registration>(registration,HttpStatus.OK);
 	}
 	
 	@PutMapping(value="/register/{id}")

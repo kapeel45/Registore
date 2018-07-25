@@ -33,7 +33,6 @@ public class DocumentService {
 				return true;
 			}else {
 				logger.error("Registration details not found for: "+documentDto.getRegistrationId());
-				return false;
 			}
 		}catch(Exception e) {
 			logger.error(Constant.GENERAL_EXCEPTION+e.toString());

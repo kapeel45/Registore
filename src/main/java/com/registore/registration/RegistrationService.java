@@ -5,8 +5,11 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.registore.constants.Constant;
 import com.registore.exception.UserAlreadyExist;
 
 @Service
@@ -26,14 +29,21 @@ public class RegistrationService {
 		return regDao.findOne(Long.parseLong(id));
 	}
 
-	public void createRegistration(Registration autoRegister) throws Exception {
-		
+	public Registration createRegistration(Registration autoRegister) throws Exception {
+		Registration registration;
 		try {
-			regDao.save(autoRegister);
+			 registration = regDao.save(autoRegister);
+			 
+			 if(registration == null) {
+				 logger.error(Constant.ENTITY_NOT_CREATED+autoRegister.getId());
+			 }
+			 
 		}catch(Exception e) {
 			logger.error("createRegistration Exception: "+e.toString());
 			throw new UserAlreadyExist(e.toString());
 		}
+		
+		return registration;
 	}
 
 	public void updateRegistration(String id, Registration reqRegister) {

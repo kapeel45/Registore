@@ -26,7 +26,6 @@ public class DocumentController {
 	public @ResponseBody ResponseEntity<String> addDocument(@RequestBody DocumentDto documentDto){
 		
 		try {
-			//TODO registration id will be provided from client end
 			boolean result = documentService.addDocument(documentDto);
 			if(result) {
 				return new ResponseEntity<String>(Constant.SUCCESS,HttpStatus.OK);

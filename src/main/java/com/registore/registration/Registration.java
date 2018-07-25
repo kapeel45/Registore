@@ -12,8 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
 
+import com.registore.apartment.ApartmentRegistration;
 import com.registore.document.Document;
 import com.registore.otp.OTPData;
 
@@ -50,10 +50,13 @@ public class Registration {
 	@OneToMany(mappedBy = "registrationId", cascade = CascadeType.ALL)
 	private List<Document> listDocument = new ArrayList<Document>();
 	
+	@OneToMany(mappedBy = "registrationId", cascade = CascadeType.ALL)
+	private List<ApartmentRegistration> listApartment = new ArrayList<ApartmentRegistration>();
+	
 	@OneToMany(mappedBy = "registrationOtpId", cascade = CascadeType.ALL)
 	private List<OTPData>  otpData = new ArrayList<OTPData>();
 
-	Registration(){}
+	protected Registration(){}
 	
 	public Registration( String firstname, String middlename, String lastname, String area, String mobile,
 			String email, String gender) {
