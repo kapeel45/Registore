@@ -23,7 +23,7 @@ public class ApartmentRegisterController {
 	private ApartmentRegisterService apartmentRegService;
 	
 	@PostMapping("/add")
-	public @ResponseBody ResponseEntity<Object> addApartmentRegistration(@RequestBody ApartmentRegisterDto apartmentRegisterDto){
+	public @ResponseBody ResponseEntity<ApartmentRegister> addApartmentRegistration(@RequestBody ApartmentRegisterDto apartmentRegisterDto){
 		ApartmentRegister apartmentRegister = null;
 		logger.info("Registration controller called");
 		
@@ -34,7 +34,7 @@ public class ApartmentRegisterController {
 			//return new ResponseEntity<>(apartmentRegister,HttpStatus.BAD_REQUEST);
 		}
 		
-		return new ResponseEntity<Object>(apartmentRegister, HttpStatus.OK);
+		return new ResponseEntity<ApartmentRegister>(apartmentRegister, HttpStatus.OK);
 	}
 	
 }

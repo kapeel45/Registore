@@ -37,11 +37,11 @@ public class ApartmentRegister {
 	@Column(columnDefinition = "DECIMAL(10,8)")
 	private Double latitude;
 
-	public long getApartRegId() {
+	public Long getApartRegId() {
 		return apartRegId;
 	}
 
-	public void setApartRegId(long apartRegId) {
+	public void setApartRegId(Long apartRegId) {
 		this.apartRegId = apartRegId;
 	}
 
