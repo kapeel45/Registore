@@ -1,5 +1,7 @@
 package com.registore.apartment.register;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,12 +43,12 @@ public class ApartmentRegisterController {
 	
 	
 	@CrossOrigin
-	@PostMapping("/getdata")
-	public @ResponseBody ApartmentRegister getByEmailMobile(@RequestBody ApartmentRegister reg) {
-		System.out.println("here");
-		System.out.println("Apartment name : "+reg.getApartmentName());
-		ApartmentRegister re=apartmentRegService.getdata(reg.getApartmentName());
-		return re;
+	@PostMapping("/apartmentDetails")
+	public @ResponseBody ResponseEntity<List<ApartmentRegister>> getApartmentDetails(@RequestBody ApartmentRegisterDto apartment) {
+		
+		logger.info("Apartmentname : "+apartment.getApartmentName());
+		List<ApartmentRegister> apartDetails = apartmentRegService.getApartmentDetails(apartment.getApartmentName());
+		return new ResponseEntity<List<ApartmentRegister>>(apartDetails,HttpStatus.OK);
 	}
 	
 }

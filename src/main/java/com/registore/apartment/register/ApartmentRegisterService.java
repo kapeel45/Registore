@@ -1,5 +1,7 @@
 package com.registore.apartment.register;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
@@ -50,8 +52,8 @@ public class ApartmentRegisterService {
 	}
 	
 	
-	public ApartmentRegister getdata(String apartmentName) {
-		System.out.println("in service");
+	public List<ApartmentRegister> getApartmentDetails(String apartmentName) {
+		logger.info("in get Apartment detail service");
 		return apartmentRegisterDao.findByApartmentName(apartmentName);
  	}
 
