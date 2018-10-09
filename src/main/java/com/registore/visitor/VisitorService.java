@@ -14,7 +14,7 @@ public class VisitorService {
 	public boolean verifyVisitor(String mobileNo) {
 		
 		if(registrationService.verifyRegistrationbyMobile(mobileNo))
-			return false;
+			return true;
 		else
 			return false;
 	}
