@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,14 +29,13 @@ public class RegistrationController {
 		return regService.getAllRegisteredUser(); 
 	}
 	
-	@RequestMapping("/run")
+	@GetMapping("/run")
 	public String run(){
 		return "Complete"; 
 	}
 	
 	@GetMapping("/register/{id}")
-	public Registration getTopic(@PathVariable String id){	
-	
+	public Registration getRegistration(@PathVariable String id){	
 		return regService.getRegistration(id);
 	}
 	
@@ -58,7 +56,6 @@ public class RegistrationController {
 	public void updateRegistration(@RequestBody Registration register, @PathVariable String id){
 		regService.updateRegistration(id, register);
 	}
-	
 	
 	@DeleteMapping(value="/register/{id}")
 	public void deleteRegistration(@PathVariable String id){
