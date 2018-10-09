@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ public class ApartmentRegisterController {
 	@Autowired
 	private ApartmentRegisterService apartmentRegService;
 	
+	@CrossOrigin
 	@PostMapping("/add")
 	public @ResponseBody ResponseEntity<ApartmentRegister> addApartmentRegistration(@RequestBody ApartmentRegisterDto apartmentRegisterDto){
 		ApartmentRegister apartmentRegister = null;
@@ -35,6 +37,16 @@ public class ApartmentRegisterController {
 		}
 		
 		return new ResponseEntity<ApartmentRegister>(apartmentRegister, HttpStatus.OK);
+	}
+	
+	
+	@CrossOrigin
+	@PostMapping("/getdata")
+	public @ResponseBody ApartmentRegister getByEmailMobile(@RequestBody ApartmentRegister reg) {
+		System.out.println("here");
+		System.out.println("Apartment name : "+reg.getApartmentName());
+		ApartmentRegister re=apartmentRegService.getdata(reg.getApartmentName());
+		return re;
 	}
 	
 }

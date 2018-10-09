@@ -1,11 +1,14 @@
 package com.registore.apartment.register;
 
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class ApartmentRegisterService {
 
 	private static final Logger logger=LoggerFactory.getLogger(ApartmentRegisterService.class) ;
@@ -45,5 +48,11 @@ public class ApartmentRegisterService {
 		
 		return null;
 	}
+	
+	
+	public ApartmentRegister getdata(String apartmentName) {
+		System.out.println("in service");
+		return apartmentRegisterDao.findByApartmentName(apartmentName);
+ 	}
 
 }
