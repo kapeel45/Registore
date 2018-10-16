@@ -1,6 +1,7 @@
 package com.registore.apartment.register;
 
-import javax.transaction.Transactional;
+
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,13 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@Transactional
 public class ApartmentRegisterService {
 
 	private static final Logger logger=LoggerFactory.getLogger(ApartmentRegisterService.class) ;
 	
 	@Autowired
 	private ApartmentRegisterDao apartmentRegisterDao;
+	
+	
 	
 	public ApartmentRegister createApartmentRegistration(ApartmentRegisterDto apartmentRegisterDto) {
 		
@@ -46,13 +48,20 @@ public class ApartmentRegisterService {
 			logger.error("Exception Message"+e.toString());
 		}
 		
-		return null;
+		return apartmentRegister;
 	}
 	
 	
-	public ApartmentRegister getdata(String apartmentName) {
-		System.out.println("in service");
-		return apartmentRegisterDao.findByApartmentName(apartmentName);
+	
+	
+	public ApartmentRegister getAptRegisterById(String id){
+		return apartmentRegisterDao.findOne(Long.parseLong(id));
+	}
+	
+	
+	public List<ApartmentRegister> getApartmentDetails(String apartmentName) {
+		logger.info("in get Apartment detail service");
+		return (List<ApartmentRegister>) apartmentRegisterDao.findByApartmentName(apartmentName);
  	}
 
-}
+	}

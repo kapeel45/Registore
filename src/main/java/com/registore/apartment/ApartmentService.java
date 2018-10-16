@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.registore.apartment.register.ApartmentRegister;
 import com.registore.constants.Constant;
 
 @Service
@@ -26,6 +27,7 @@ public class ApartmentService {
 		return apartmentRegistration;
 	
 	}
+
 
 	
 }
