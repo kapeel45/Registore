@@ -76,11 +76,4 @@ public class RegistrationService {
 			return false;
 	}
 	
-	
-	
-	public Registration getdata(String email,String mobile) {
-		System.out.println("in service");
-		return regDao.findByEmailAndMobile(email, mobile);
- 	}
-	
 }

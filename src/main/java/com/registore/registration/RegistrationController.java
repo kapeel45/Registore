@@ -65,15 +65,5 @@ public class RegistrationController {
 	public void deleteRegistration(@PathVariable String id){
 		regService.deleteRegistration(id);
 	}
-	
-	
-	@CrossOrigin
-	@GetMapping("/get-by-mob-and-email/{email}/{mobile}")
-	public @ResponseBody Registration getByEmailMobile(@PathVariable String email, @PathVariable String mobile) {
-		System.out.println("here");
-		System.out.println("email & monb : "+email+mobile);
-		Registration re=regService.getdata(email,mobile);
-		return re;
-	}
-	
+		
 }

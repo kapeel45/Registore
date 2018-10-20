@@ -61,7 +61,7 @@ public class ApartmentRegisterService {
 	
 	public List<ApartmentRegister> getApartmentDetails(String apartmentName) {
 		logger.info("in get Apartment detail service");
-		return (List<ApartmentRegister>) apartmentRegisterDao.findByApartmentName(apartmentName);
+		return apartmentRegisterDao.findByApartmentName(apartmentName);
  	}
 
 	}
