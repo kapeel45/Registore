@@ -45,7 +45,7 @@ public class ApartmentRegisterController {
 	
 	
 	@CrossOrigin
-	@GetMapping("/apartmentDetails/{apartmentName}")
+	@GetMapping("/apartment-name/{apartmentName}")
 	public @ResponseBody ResponseEntity<List<ApartmentRegister>> getApartmentDetails(@PathVariable String apartmentName) {
 		
 		logger.info("Apartmentname : "+apartmentName);
@@ -55,7 +55,7 @@ public class ApartmentRegisterController {
 	
 	
 	@CrossOrigin
-	@GetMapping(value="/aprtregister/{id}")
+	@GetMapping(value="/apartment-id/{id}")
 	public ApartmentRegister getTopic(@PathVariable String id){
 		return apartmentRegService.getAptRegisterById(id);
 	}
