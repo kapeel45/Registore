@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +25,7 @@ public class RegistrationController {
 	@Autowired
 	private RegistrationService regService;
 
-	@GetMapping("/register")
+//	@GetMapping("/get-all-users")
 	public List<Registration> getAllRegisteredUser(){
 		return regService.getAllRegisteredUser(); 
 	}
@@ -36,13 +35,13 @@ public class RegistrationController {
 		return "Complete"; 
 	}
 	
-	@GetMapping("/register/{id}")
+	@GetMapping("/get-user-by-id/{id}")
 	public Registration getTopic(@PathVariable String id){	
 	
 		return regService.getRegistration(id);
 	}
 	
-	@PostMapping(value="/register")
+	@PostMapping(value="/register-by-post")
 	public @ResponseBody ResponseEntity<Registration> addRegistration(@RequestBody Registration register){
 		Registration registration = null;
 		logger.info("Registration controller called");
@@ -55,13 +54,13 @@ public class RegistrationController {
 		return new ResponseEntity<Registration>(registration,HttpStatus.OK);
 	}
 	
-	@PutMapping(value="/register/{id}")
+	@PutMapping(value="/update-user/{id}")
 	public void updateRegistration(@RequestBody Registration register, @PathVariable String id){
 		regService.updateRegistration(id, register);
 	}
 	
 	
-	@DeleteMapping(value="/register/{id}")
+	@DeleteMapping(value="/delete-user/{id}")
 	public void deleteRegistration(@PathVariable String id){
 		regService.deleteRegistration(id);
 	}

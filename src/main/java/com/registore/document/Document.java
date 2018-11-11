@@ -11,9 +11,10 @@ import javax.persistence.ManyToOne;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.registore.registration.Registration;
+import com.registore.traceability.Traceability;
 
 @Entity
-public class Document {
+public class Document extends Traceability{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

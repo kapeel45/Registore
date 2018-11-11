@@ -13,12 +13,14 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.Email;
 
-import com.registore.apartment.ApartmentRegistration;
+
 import com.registore.document.Document;
 import com.registore.otp.OTPData;
+import com.registore.traceability.Traceability;
+import com.registore.visitor.Visitor;
 
 @Entity
-public class Registration {
+public class Registration extends Traceability {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -51,7 +53,7 @@ public class Registration {
 	private List<Document> listDocument = new ArrayList<Document>();
 	
 	@OneToMany(mappedBy = "registrationId", cascade = CascadeType.ALL)
-	private List<ApartmentRegistration> listApartment = new ArrayList<ApartmentRegistration>();
+	private List<Visitor> listApartment = new ArrayList<Visitor>();
 	
 	@OneToMany(mappedBy = "registrationOtpId", cascade = CascadeType.ALL)
 	private List<OTPData>  otpData = new ArrayList<OTPData>();

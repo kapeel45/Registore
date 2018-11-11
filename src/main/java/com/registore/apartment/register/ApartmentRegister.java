@@ -7,9 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.registore.traceability.Traceability;
+import com.registore.util.Utility;
+
 @Entity
 @Table(name = "apartment_register")
-public class ApartmentRegister {
+public class ApartmentRegister extends Traceability {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

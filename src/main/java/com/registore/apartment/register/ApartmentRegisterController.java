@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/register-apartment")
+@RequestMapping("/apartment")
 public class ApartmentRegisterController {
 
 	
@@ -45,7 +46,7 @@ public class ApartmentRegisterController {
 	
 	
 	@CrossOrigin
-	@GetMapping("/apartment-name/{apartmentName}")
+	@GetMapping("/by-name/{apartmentName}")
 	public @ResponseBody ResponseEntity<List<ApartmentRegister>> getApartmentDetails(@PathVariable String apartmentName) {
 		
 		logger.info("Apartmentname : "+apartmentName);
@@ -55,8 +56,22 @@ public class ApartmentRegisterController {
 	
 	
 	@CrossOrigin
-	@GetMapping(value="/apartment-id/{id}")
-	public ApartmentRegister getTopic(@PathVariable String id){
-		return apartmentRegService.getAptRegisterById(id);
+	@GetMapping(value="/by-id/{id}")
+	public ApartmentRegister getTopic(@PathVariable Integer id){
+		return apartmentRegService.getAptRegisterById(id.toString());
 	}
+	
+	@CrossOrigin
+	@PutMapping(value="/update-apartment/{id}")
+	public void updateApartmentRegister(@RequestBody ApartmentRegister apartmentRegister,@PathVariable String id) {
+		apartmentRegService.updateApartmentRegister(id, apartmentRegister);		
+	}
+	
+	@CrossOrigin
+	@GetMapping(value="/all-registered-apartment")
+	public List<ApartmentRegister> getAllRegisteredApartment() {
+		return apartmentRegService.getAllRegisteredApartment();
+	}
+	
+	
 }

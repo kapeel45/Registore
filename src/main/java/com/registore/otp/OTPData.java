@@ -10,10 +10,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.registore.registration.Registration;
+import com.registore.traceability.Traceability;
 
 @Entity
 @Table(name= "OTP_DATA")
-public class OTPData {
+public class OTPData extends Traceability {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

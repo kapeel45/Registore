@@ -64,4 +64,24 @@ public class ApartmentRegisterService {
 		return apartmentRegisterDao.findByApartmentName(apartmentName);
  	}
 
+	public void updateApartmentRegister(String id, ApartmentRegister apartmentRegister) {
+		ApartmentRegister register=apartmentRegisterDao.findOne(Long.parseLong(id));
+		
+		register.setApartmentName(apartmentRegister.getApartmentName());
+		register.setLatitude(apartmentRegister.getLatitude());
+		register.setLongitude(apartmentRegister.getLongitude());
+		register.setLocation(apartmentRegister.getLocation());
+		register.setNoOfFlats(apartmentRegister.getNoOfFlats());
+		register.setNoOfFlatsOnEachFloor(apartmentRegister.getNoOfFlatsOnEachFloor());
+		register.setNoOfFloors(apartmentRegister.getNoOfFloors());
+		register.setNoOfWings(apartmentRegister.getNoOfWings());
+		register.setWingsName(apartmentRegister.getWingsName());
+		
+		apartmentRegisterDao.save(register);
+	}
+	
+	public List<ApartmentRegister> getAllRegisteredApartment(){
+		return (List<ApartmentRegister>) apartmentRegisterDao.findAll();
+	}
+	
 	}
